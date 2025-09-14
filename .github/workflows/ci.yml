@@ -35,4 +35,9 @@ jobs:
 
       - name: Run Java application with arguments
         run: mvn exec:java -Dexec.mainClass="household.Main" -DargFromCommandLine="src/main/resources/input.txt"
-          
+
+      - name: Package the project into a JAR
+        run: mvn package -DskipTests
+
+      - name: Run Java application with arguments
+        run: java -jar target/your-artifact-name.jar -DargFromCommandLine="src/main/resources/input.txt"
