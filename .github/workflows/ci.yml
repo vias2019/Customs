@@ -39,5 +39,5 @@ jobs:
       - name: Package the project into a JAR
         run: mvn package -DskipTests
 
-      - name: Run Java application with arguments
+      - name: Run Java application JAR file with arguments
         run: java -jar target/Customs.jar -DargFromCommandLine="src/main/resources/input.txt"
