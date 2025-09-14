@@ -34,4 +34,6 @@ jobs:
         run: mvn clean compile
 
       - name: Run Java application with arguments
-        run: mvn exec:java -Dexec.mainClass="household.Main" -DargFromCommandLine="src/main/resources/input.txt"
+        run: 
+          - mvn exec:java -Dexec.mainClass="household.Main" -DargFromCommandLine="src/main/resources/input.txt"
+          - java src/test/java/FileComparatorTest.java src/test/java/test_output.txt output.txt
