@@ -13,8 +13,8 @@ public class Main {
         String inputFilePath = args[0];
         try {
             // Redirect System.out to output.txt
-            //PrintStream fileOut = new PrintStream(new FileOutputStream("output.txt"));
-            //System.setOut(fileOut);
+            PrintStream fileOut = new PrintStream(new FileOutputStream("output.txt"));
+            System.setOut(fileOut);
 
             populatedHashtable = new DataPopulator();
             populatedHashtable.populateHashtableFromFile(inputFilePath);
@@ -25,4 +25,5 @@ public class Main {
         }
     }
 }
+
 
