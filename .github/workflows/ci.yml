@@ -1,29 +1,37 @@
-name: Simple CI Pipeline
+name: Maven Run Input
 
 on:
   push:
     branches:
-      - main  # Trigger on push to main branch
-  workflow_dispatch:
-    inputs:
-      param1:
-        description: 'Parameter 1'
-        required: false
-        default: 'default'
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  build:
+  build-and-run:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Run a simple command
-        run: |
-          set -e
-          echo "Hello, this is a simple CI pipeline!"
-          mvn -v
-          pwd
-         
-          mvn exec:java -DargFromCommandLine="src/main/resources/input.txt"
-          
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Build with Maven
+        run: mvn clean compile
+
+      - name: Run Java application with arguments
+        run: mvn exec:java -Dexec.mainClass="household.Main" -DargFromCommandLine="src/main/resources/input.txt"
