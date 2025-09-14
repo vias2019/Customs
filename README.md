@@ -14,4 +14,5 @@ Run a test:
 
 java src/test/java/FileComparatorTest.java src/test/java/test_output.txt output.txt
 
-![Alt text](output.png)
+![Alt text](output.jpg)
+
