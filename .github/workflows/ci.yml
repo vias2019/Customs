@@ -24,6 +24,6 @@ jobs:
           echo "Hello, this is a simple CI pipeline!"
           mvn -v
           pwd
-          java -v
+         
           mvn exec:java -DargFromCommandLine="src/main/resources/input.txt"
           
