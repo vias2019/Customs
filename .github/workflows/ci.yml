@@ -37,6 +37,6 @@ jobs:
         run: mvn exec:java -Dexec.mainClass="household.Main" -DargFromCommandLine="src/main/resources/input.txt"
 
       - name: Package the project into a JAR
-        run: mvn package -DskipTests && java -jar target/Customs.jar input.txt
+        run: mvn package -DskipTests && java -DargFromCommandLine="target/input.txt" -jar target/Customs.jar
 
       
