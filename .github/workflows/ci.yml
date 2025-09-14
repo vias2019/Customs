@@ -40,4 +40,4 @@ jobs:
         run: mvn package -DskipTests
 
       - name: Run Java application JAR file with arguments
-        run: java -jar target/Customs.jar -DargFromCommandLine="src/main/resources/input.txt"
+        run: java -jar target/Customs.jar -DargFromCommandLine="../src/main/resources/input.txt"
