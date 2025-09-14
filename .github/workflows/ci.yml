@@ -43,4 +43,4 @@ jobs:
         run: javac src/test/java/FileComparatorTest.java && java src/test/java/FileComparatorTest.java src/test/java/input_output.txt output.txt && cat output.txt
 
       - name: Test - run test file 
-        run: mvn package -DskipTests && java -jar target/Customs.jar src/test/java/test_input.txt &&  javac src/test/java/FileComparatorTest.java && java src/test/java/FileComparatorTest.java src/test/java/test_output.txt output.txt && cat src/test/java/test_output.txt && cat output.txt
+        run: mvn package -DskipTests && java -jar target/Customs.jar src/test/java/test_input.txt && java src/test/java/FileComparatorTest.java src/test/java/test_output.txt output.txt && cat src/test/java/test_output.txt && cat output.txt
