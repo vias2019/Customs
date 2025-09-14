@@ -40,5 +40,5 @@ jobs:
         run: mvn package -DskipTests && java -jar target/Customs.jar src/main/resources/input.txt
 
       - name: Test
-        run: java src/test/java/FileComparatorTest.java src/test/java/input_output.txt output.txt
+        run: javac src/test/java/FileComparatorTest.java && java src/test/java/FileComparatorTest.java src/test/java/input_output.txt output.txt
       
