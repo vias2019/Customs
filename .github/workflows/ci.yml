@@ -33,10 +33,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean compile
 
-      - name: Run Java application with arguments
+      - name: Run Java application with arguments - mvn exec
         run: mvn exec:java -Dexec.mainClass="household.Main" -DargFromCommandLine="src/main/resources/input.txt"
         
       - name: Package the project into a JAR
         run: mvn package -DskipTests && java -jar target/Customs.jar src/main/resources/input.txt
 
+      - name: Test
+        run: java src/test/java/FileComparatorTest.java src/test/java/input_output.txt output.txt
       
